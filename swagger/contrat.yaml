@@ -47,8 +47,7 @@ securityDefinitions:
     name: api_key
     in: query
 # Added by API Auto Mocking Plugin
-basePath: /alejandra.paredesdgc/testingEndpoint/1.0.0
+basePath: /api/v1
+# Added by API Auto Mocking Plugin
 schemes:
  - https
-# Added by API Auto Mocking Plugin
-# host: virtserver.swaggerhub.com
