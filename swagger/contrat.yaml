@@ -42,8 +42,6 @@ paths:
 securityDefinitions:
   APIKeyQueryParam:
     type: apiKey
-  # api_key:
-  #   type: apiKey
     name: api_key
     in: query
 # Added by API Auto Mocking Plugin
