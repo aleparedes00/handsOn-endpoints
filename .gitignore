@@ -1,0 +1,13 @@
+README.md
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+.
+*~
+
+# Mac hidden files
+.DS_Store
+.AppleDouble
+.LSOverride
+venv/

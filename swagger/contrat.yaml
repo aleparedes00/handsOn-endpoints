@@ -1,0 +1,54 @@
+swagger: '2.0'
+info:
+  version: "1.0.1"
+  title: HandsOn EndPoints
+  description: This is an example of an Openapi definition with Cloud Endpoints implementation.
+security: 
+  - APIKeyQueryParam: []
+produces:
+  - application/json
+x-google-backend:
+  address: https://helloworld-un6nz7ltbq-uc.a.run.app
+host: "helloworld-un6nz7ltbq-uc.a.run.app"
+
+paths:
+  /version:
+    get:
+      summary: return current version
+      description: float current version
+      operationId: version
+      produces:
+      - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              type: string
+
+  /ping:
+    get:
+      summary: Server heartbeat operation
+      description: application heartbeat
+      operationId: ping
+      produces:
+      - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+securityDefinitions:
+  APIKeyQueryParam:
+    type: apiKey
+  # api_key:
+  #   type: apiKey
+    name: api_key
+    in: query
+# Added by API Auto Mocking Plugin
+basePath: /alejandra.paredesdgc/testingEndpoint/1.0.0
+schemes:
+ - https
+# Added by API Auto Mocking Plugin
+# host: virtserver.swaggerhub.com
