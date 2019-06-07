@@ -28,7 +28,7 @@ paths:
     post:
       summary: return product new id 
       description: add product to db
-      operationId: handlers.add_products
+      operationId: handlers.add_product
       parameters:
         - in: body
           name: product

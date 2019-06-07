@@ -23,17 +23,16 @@ def get_all_products():
     return all_products
 
 
-def add_products():
+def add_product():
     # Extract products from body
-    json_payload = connexion.request.get_json()
+    product = connexion.request.get_json()
 
     # Add a new products to database
-    for product in json_payload:
-        doc_ref = products_ref.document('product-{}'.format(product.get('id')))
-        doc_ref.set({
-            'id': product.get('id'),
-            'title': product.get('title'),
-            'price': product.get('price')
-        })
+    doc_ref = products_ref.document('product-{}'.format(product.get('id')))
+    doc_ref.set({
+        'id': product.get('id'),
+        'title': product.get('title'),
+        'price': product.get('price')
+    })
 
-    return {"message": "{} products saved".format(len(json_payload))}
+    return {"message": "OK"}
