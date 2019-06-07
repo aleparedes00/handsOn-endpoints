@@ -1,0 +1,12 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: Deploy
+  args:
+  - 'beta'
+  - 'run'
+  - 'deploy'
+  - 'image'
+  - 'gcr.io/sandbox-tlengyel/products-api'
+  - 'region'
+  - 'us-central1'
+
