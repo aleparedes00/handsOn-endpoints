@@ -1,0 +1,10 @@
+steps:
+# Deploy Cloud Endpoints service
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: Cloud Endpoints - Deploy service
+  entrypoint: /bin/sh
+  args:
+  - 'endpoints'
+  - 'services'
+  - 'deploy'
+  - 'swagger/openapi.yaml'

@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   version: "1.0.1"
-  title: HandsOn EndPoints
+  title: Products API
   description: This is an example of an Openapi definition with Cloud Endpoints implementation.
 security: 
   - APIKeyQueryParam: []
@@ -44,8 +44,6 @@ securityDefinitions:
     type: apiKey
     name: api_key
     in: query
-# Added by API Auto Mocking Plugin
-basePath: /api/v1
 # Added by API Auto Mocking Plugin
 schemes:
  - https
