@@ -8,8 +8,8 @@ info:
 produces:
   - application/json
 x-google-backend:
-  address: https://helloworld-un6nz7ltbq-uc.a.run.app
-host: "helloworld-un6nz7ltbq-uc.a.run.app"
+  address: https://products-api-un6nz7ltbq-uc.a.run.app
+host: "products-api-un6nz7ltbq-uc.a.run.app"
 
 paths:
   /products:
