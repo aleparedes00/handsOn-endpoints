@@ -1,29 +1,39 @@
 import connexion
+from flask import abort
 from google.cloud import firestore
 
+# Database settings
 db = firestore.Client()
+products_ref = db.collection('products')
 
-def health_check():
-    return "Hello!", 200
 
-def get_all_procucts():
-    json_payload = connexion.request.json
+def get_product(product_id):
+    product = products_ref.where('id', '==', product_id).get()
 
+    try:
+        return next(product).to_dict()
+    except StopIteration:
+        abort(404)
+
+
+def get_all_products():
     # Get products from database
-    users_ref = db.collection(u'users')
-    docs = users_ref.get()
+    all_products = list(map(lambda d: d.to_dict(), products_ref.get()))
 
-    for doc in docs:
-        print(u'{} => {}'.format(doc.id, doc.to_dict()))
+    return all_products
 
 
-def add_product():
-    json_payload = connexion.request.json
+def add_products():
+    # Extract products from body
+    json_payload = connexion.request.get_json()
 
-    # Add a new document
-    doc_ref = db.collection(u'products').document(u'product-')
-    doc_ref.set({
-        u'id': u'12',
-        u'name': u'bananes',
-        u'price': 2.5
-    })
+    # Add a new products to database
+    for product in json_payload:
+        doc_ref = products_ref.document('product-{}'.format(product.get('id')))
+        doc_ref.set({
+            'id': product.get('id'),
+            'title': product.get('title'),
+            'price': product.get('price')
+        })
+
+    return {"message": "{} products saved".format(len(json_payload))}

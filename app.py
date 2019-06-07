@@ -9,7 +9,7 @@ app = connexion.App(
     options={"swagger_ui": False}
 )
 
-app.add_api('contrat.yaml', strict_validation=True, validate_responses=True)
+app.add_api('contrat.yaml', strict_validation=True, validate_responses=False)
 
 application = app.app
 

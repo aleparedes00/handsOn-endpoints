@@ -3,8 +3,8 @@ info:
   version: "2.0.0"
   title: Products API
   description: Sample API for SU products add and get.
-security: 
-  - APIKeyQueryParam: []
+# security: 
+#   - APIKeyQueryParam: []
 produces:
   - application/json
 x-google-backend:
@@ -15,7 +15,7 @@ paths:
   /products:
     get:
       summary: return list of products
-      operationId: products.get
+      operationId: handlers.get_all_products
       produces:
       - application/json
       responses:
@@ -28,7 +28,7 @@ paths:
     post:
       summary: return product new id 
       description: add product to db
-      operationId: products.post
+      operationId: handlers.add_products
       parameters:
         - in: body
           name: product
@@ -45,8 +45,8 @@ paths:
     get:
       summary: specific product access
       description: return specific product from db
-      operationId: product.get
-      parameters: 
+      operationId: handlers.get_product
+      parameters:
         - in: path
           name: product_id
           required: true
@@ -56,11 +56,11 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Product'
-securityDefinitions:
-  APIKeyQueryParam:
-    type: apiKey
-    name: api_key
-    in: query
+# securityDefinitions:
+#   APIKeyQueryParam:
+#     type: apiKey
+#     name: api_key
+#     in: query
     
 definitions:
   Product:
