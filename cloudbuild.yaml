@@ -19,8 +19,10 @@ steps:
   - 'beta'
   - 'run'
   - 'deploy'
+  - 'products-api'
   - '--image'
   - 'gcr.io/sandbox-tlengyel/products-api:$SHORT_SHA'
   - '--region'
   - 'us-central1'
 
+ gcloud beta run deploy --image gcr.io/$PROJECT/helloworld --region us-central1

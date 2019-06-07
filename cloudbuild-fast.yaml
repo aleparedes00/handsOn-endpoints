@@ -29,6 +29,7 @@ steps:
   - 'beta'
   - 'run'
   - 'deploy'
+  - 'products-api'
   - '--image'
   - 'gcr.io/sandbox-tlengyel/products-api:$SHORT_SHA'
   - '--region'
