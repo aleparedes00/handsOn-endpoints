@@ -1,12 +1,26 @@
 steps:
+- name: 'gcr.io/cloud-builders/docker'
+  id: Build
+  args:
+  - 'build'
+  - '-t'
+  - 'gcr.io/sandbox-tlengyel/products-api:$SHORT_SHA'
+  - '.'
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: Push
+  args:
+  - 'push'
+  - 'gcr.io/sandbox-tlengyel/products-api:$SHORT_SHA'
+
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Deploy
   args:
   - 'beta'
   - 'run'
   - 'deploy'
-  - 'image'
-  - 'gcr.io/sandbox-tlengyel/products-api'
-  - 'region'
+  - '--image'
+  - 'gcr.io/sandbox-tlengyel/products-api:$SHORT_SHA'
+  - '--region'
   - 'us-central1'
 
