@@ -1,8 +1,8 @@
 swagger: '2.0'
 info:
-  version: "1.0.1"
+  version: "2.0.0"
   title: HandsOn EndPoints
-  description: This is an example of an Openapi definition with Cloud Endpoints implementation.
+  description: Sample API for SU products add and get.
 security: 
   - APIKeyQueryParam: []
 produces:
@@ -12,11 +12,10 @@ x-google-backend:
 host: "helloworld-un6nz7ltbq-uc.a.run.app"
 
 paths:
-  /version:
+  /products:
     get:
-      summary: return current version
-      description: float current version
-      operationId: version
+      summary: return list of products
+      operationId: products.get
       produces:
       - application/json
       responses:
@@ -25,27 +24,57 @@ paths:
           schema:
             type: array
             items:
-              type: string
-
-  /ping:
-    get:
-      summary: Server heartbeat operation
-      description: application heartbeat
-      operationId: ping
-      produces:
-      - application/json
+              $ref: '#/definitions/Product'
+    post:
+      summary: return product new id 
+      description: add product to db
+      operationId: products.post
+      parameters:
+        - in: body
+          name: product
+          required: true
+          description: required fields for products
+          schema:
+            $ref: '#/definitions/Product'
       responses:
         200:
           description: OK
           schema:
             type: string
+  /product/{product_id}:
+    get:
+      summary: specific product access
+      description: return specific product from db
+      operationId: product.get
+      parameters: 
+        - in: path
+          name: product_id
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Product'
 securityDefinitions:
   APIKeyQueryParam:
     type: apiKey
     name: api_key
     in: query
-# Added by API Auto Mocking Plugin
-basePath: /api/v1
-# Added by API Auto Mocking Plugin
+    
+definitions:
+  Product:
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+      price:
+        type: number
+        format: float
+    required:
+      - id
+      - title
+      - price
 schemes:
  - https
