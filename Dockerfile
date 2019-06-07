@@ -6,6 +6,8 @@ WORKDIR $APP_HOME
 COPY . .
 
 # Install production dependencies.
+RUN apk add --update python3-dev build-base
+
 RUN pip install -r requirements.txt
 ENV PORT=8080
 
